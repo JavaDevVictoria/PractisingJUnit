@@ -23,6 +23,6 @@ public class HashMapTest {
         assertTrue((hashMap.isEmpty()));
         hashMap.put("town", null);
         assertNull(hashMap.get("town"));
-    }git 
+    }
 
 }
