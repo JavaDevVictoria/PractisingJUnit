@@ -25,7 +25,7 @@ public class Regex {
             result.append(matcher.group());
         }
 
-        String git  = result.toString();
+        String output  = result.toString();
         System.out.print("In \"" + inputString + "\", found matches: " + (output.isEmpty() ? "No matches" : "\"" + output + "\""));
         return output;
     }
