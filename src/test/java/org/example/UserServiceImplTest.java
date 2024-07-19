@@ -6,8 +6,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 class UserServiceImplTest {
 
@@ -30,9 +29,15 @@ class UserServiceImplTest {
 
     @Test
     void testUserGetsPassword() throws Exception {
-        
+        String password = "password";
+        String hashedPassword = "hashedPassword";
+
+        when(mockedAccountUser.getPassword()).thenReturn(password);
+        when(mockedSecurityService.md5(password)).thenReturn((hashedPassword));
+
         userServiceImpl.assignPassword(mockedAccountUser);
 
+        verify(mockedAccountUser, times(1)).setPassword(hashedPassword);
         verify(mockedUserDAO,times(1)).updateUser(mockedAccountUser);
     }
 
